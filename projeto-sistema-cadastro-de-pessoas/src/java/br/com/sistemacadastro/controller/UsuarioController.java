@@ -10,6 +10,8 @@ import br.com.sistemacadastro.model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,6 +64,14 @@ public class UsuarioController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        if (request.getParameter("action").equals("listar")) 
+        {
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            List<Usuario> usuarios = usuarioDAO.listarTodos();
+            request.setAttribute("usuarios", usuarios);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaUsuarios.jsp");
+            dispatcher.forward(request, response);
+    	}
     }
 
     /**
