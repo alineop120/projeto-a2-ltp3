@@ -1,4 +1,4 @@
-package br.com.sistemacadastropessoas.uitl;
+package br.com.sistemacadastro.uitl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

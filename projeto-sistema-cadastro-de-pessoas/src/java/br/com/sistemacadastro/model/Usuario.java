@@ -1,4 +1,4 @@
-package br.com.sistemacadastropessoas.model;
+package br.com.sistemacadastro.model;
 
 /**
  *

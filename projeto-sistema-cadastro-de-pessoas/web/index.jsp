@@ -10,20 +10,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sistema de Cadastro de Pessoas</title>
+        <style>
+            body {
+                font: normal 20px Arial;
+            }
+        </style>
     </head>
     <body>
         <h1>Cadastrar Pessoas</h1>
-        <form method="post" action="UsuarioController">
-            <label>Nome</label>
+        <form action="UsuarioController" method="post">
+            <label>Nome: </label>
             <input type="text" name="nome"/>
             <br/>
-            <label>Email</label>
+            <label>Email: </label>
             <input type="email" name="email"/>
             <br/>
-            <label>Senha</label>
+            <label>Senha: </label>
             <input type="password" name="senha"/>
             <br/>
-            <label>Acesso</label>
+            <label>Acesso: </label>
             <select name="nivel">
             <option value="1">Admin</option>
             <option value="2">Usuário</option>
