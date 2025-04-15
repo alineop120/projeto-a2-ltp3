@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,8 +31,8 @@
             <br/>
             <label>Acesso: </label>
             <select name="nivel">
-            <option value="1">Admin</option>
-            <option value="2">Usuário</option>
+                <option value="1">Admin</option>
+                <option value="2">Usuário</option>
             </select>
             <input type="submit" value="Enviar"/>
         </form>
