@@ -1,8 +1,8 @@
-package br.com.sistemacadastro.dao;
+package dao;
 
 import java.util.List;
-import br.com.sistemacadastro.model.Usuario;
-import br.com.sistemacadastro.uitl.ConnectionFactory;
+import model.Usuario;
+import util.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,33 +15,35 @@ import java.util.ArrayList;
  */
 public class UsuarioDAO {
     public List<Usuario> listarTodos() {
-    	ArrayList listaUsuarios = new ArrayList();
+    	ArrayList lista = new ArrayList();
         
     	try (Connection conn = ConnectionFactory.getConnection()) {
             PreparedStatement ps = conn.prepareStatement("select * from usuarios");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-            	Usuario usuario = new Usuario();
-            	usuario.setId(rs.getInt("id"));
-            	usuario.setNome(rs.getString("nome"));
-            	usuario.setEmail(rs.getString("email"));
-            	usuario.setNivelAcesso(rs.getInt("nivel"));
-            	listaUsuarios.add(usuario);
-            }
+            	Usuario u = new Usuario(
+                    rs.getInt("id"),
+                    rs.getString("nome"),
+                    rs.getString("email"),
+                    rs.getString("senha"),
+                    rs.getInt("acesso")
+                );
+            lista.add(u);
+            }   
     	} 
         catch (SQLException e) {
             e.getMessage();
     	}
-    	return listaUsuarios;
+    	return lista;
     }
 
     public void inserir(Usuario usuario) throws SQLException {
     	try(Connection conn = ConnectionFactory.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement("insert into usuarios(nome,senha,email,nivel) values (?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("insert into usuarios(nome,email,senha,acesso) values (?,?,?,?)");
             ps.setString(1, usuario.getNome());
-            ps.setString(2, usuario.getSenha());
-            ps.setString(3, usuario.getEmail());
-            ps.setInt(4, usuario.getNivelAcesso());
+            ps.setString(2, usuario.getEmail());
+            ps.setString(3, usuario.getSenha());
+            ps.setInt(4, usuario.getAcesso());
             ps.executeUpdate();
     	}
         catch(SQLException e) {

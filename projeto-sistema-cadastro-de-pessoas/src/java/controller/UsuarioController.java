@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.sistemacadastro.controller;
+package controller;
 
-import br.com.sistemacadastro.dao.UsuarioDAO;
-import br.com.sistemacadastro.model.Usuario;
+import dao.UsuarioDAO;
+import model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -68,8 +68,11 @@ public class UsuarioController extends HttpServlet {
         {
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             List<Usuario> usuarios = usuarioDAO.listarTodos();
+            
             request.setAttribute("usuarios", usuarios);
+            
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listaUsuarios.jsp");
+            
             dispatcher.forward(request, response);
     	}
     }
@@ -89,14 +92,14 @@ public class UsuarioController extends HttpServlet {
         String nome = request.getParameter("nome");
     	String email = request.getParameter("email");
     	String senha = request.getParameter("senha");
-    	int nivel = Integer.parseInt(request.getParameter("nivel"));
+    	int acesso = Integer.parseInt(request.getParameter("acesso"));
         
         Usuario usuario = new Usuario();
    	 
     	usuario.setNome(nome);
     	usuario.setSenha(senha);
     	usuario.setEmail(email);
-    	usuario.setNivelAcesso(nivel);
+    	usuario.setAcesso(acesso);
 
         UsuarioDAO uDAO = new UsuarioDAO();
     	try {

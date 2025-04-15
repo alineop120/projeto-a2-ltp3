@@ -1,4 +1,4 @@
-package br.com.sistemacadastro.model;
+package model;
 
 /**
  *
@@ -10,20 +10,20 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private int nivelAcesso;
+    private int acesso;
     
     // Construtor Vazio
     public Usuario() {}
     
     // Construtor
     public Usuario(int id, String nome, String email,
-            String senha, int nivelAcesso) 
+            String senha, int acesso) 
     {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.nivelAcesso = nivelAcesso;
+        this.acesso = acesso;
     }
     
     @Override
@@ -33,7 +33,7 @@ public class Usuario {
                 ", nome = " + nome +
                 ", email = " + email +
                 ", senha = " + senha + 
-                ", nivelAcesso = " + nivelAcesso + 
+                ", acesso = " + acesso + 
                 "}";
     }
 
@@ -70,12 +70,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public int getNivelAcesso() {
-        return nivelAcesso;
+    public int getAcesso() {
+        return acesso;
     }
 
-    public void setNivelAcesso(int nivelAcesso) {
-        this.nivelAcesso = nivelAcesso;
+    public void setAcesso(int acesso) {
+        this.acesso = acesso;
     }
 
 

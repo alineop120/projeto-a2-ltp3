@@ -1,4 +1,4 @@
-package br.com.sistemacadastro.uitl;
+package util;
 
 import org.mindrot.bcrypt.BCrypt;
 
