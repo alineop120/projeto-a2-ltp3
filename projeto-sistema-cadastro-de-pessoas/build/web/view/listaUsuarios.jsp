@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,13 +13,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Lista de Usuarios</h1>
+        <h1>Lista de Usuarios Cadastrados</h1>
         <table>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
-                <th>Perfil</th>
+                <th>Acesso</th>
                 <th colspan="2">Ações</th>
             </tr>
             <c:forEach var="usuario" items="${usuarios}">
@@ -27,15 +28,15 @@
                     <td>${usuario.nome}</td>
                     <td>${usuario.email}</td>
                     <td>
-                        <c:if test="${usuario.nivelAcesso==1}">
+                        <c:if test="${usuario.acesso==1}">
                             Admin
                         </c:if>
-                        <c:if test="${usuario.nivelAcesso!=1}">
+                        <c:if test="${usuario.acesso!=1}">
                             Usuario
                         </c:if>
                     </td>
-                    <td>Alterar</td>
-                    <td>Excluir</td>
+                    <td><button>Alterar</button></td>
+                    <td><button>Excluir</button></td>
                 </tr>
             </c:forEach>
     	</table>
