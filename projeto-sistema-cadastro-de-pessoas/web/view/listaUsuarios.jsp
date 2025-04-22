@@ -35,10 +35,21 @@
                             Usuario
                         </c:if>
                     </td>
-                    <td><button>Alterar</button></td>
-                    <td><button>Excluir</button></td>
+                    <td>
+                        <a href="UsuarioController?action=alterar&id=${usuario.id}">Alterar</a>
+                    </td>
+                    <td>
+                        <button onclick="deletarUsuario()" id="deletaButton">Excluir</button>
+                    </td>
                 </tr>
             </c:forEach>
     	</table>
+        <script type="text/javascript">
+            let btnObjeto = document.getElementById("deletaButton");
+            function deletarUsuario() {
+                let confirma = windown.confirm("Deseja deletar esse usuario?");
+                
+            }
+        </script>
     </body>
 </html>

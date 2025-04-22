@@ -32,7 +32,7 @@ public class UsuarioDAO {
             }   
     	} 
         catch (SQLException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
     	}
     	return lista;
     }
@@ -47,7 +47,7 @@ public class UsuarioDAO {
             ps.executeUpdate();
     	}
         catch(SQLException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
     	}
     }
 
