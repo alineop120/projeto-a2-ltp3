@@ -13,8 +13,12 @@ CREATE TABLE usuarios (
     acesso INT NOT NULL
 );
 
+INSERT INTO `cadastrobd`.`usuarios` (`id`, `nome`, `email`, `senha`, `acesso`) VALUES ('1', 'Helio', 'helio@gmail.com', 'h', '1');
+
+INSERT INTO `cadastrobd`.`usuarios` (`id`, `nome`, `email`, `senha`, `acesso`) VALUES ('2', 'Claudio', 'claudio@gmail.com', 'g', '2');usuarios
+
 -- Visualizar todos os dados da tabela 'usuarios'
-SELECT * FROM usuarios;
+SELECT * FROM cadastrobd.usuarios;;
 
 -- Excluir o banco de dados (cuidado!)
 -- DROP DATABASE cadastrobd;
