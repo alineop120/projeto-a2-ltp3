@@ -47,8 +47,10 @@
         <script type="text/javascript">
             let btnObjeto = document.getElementById("deletaButton");
             function deletarUsuario() {
-                let confirma = windown.confirm("Deseja deletar esse usuario?");
-                
+                let confirma = windown.confirm("Deseja deletar esse Usuario de ID n°: "+id+?");
+                if(confirma) {
+                    windown.location.href="UsuarioController?action=deletar&id="+id;
+                }
             }
         </script>
     </body>
