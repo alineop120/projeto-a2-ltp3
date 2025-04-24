@@ -55,6 +55,14 @@ public class UsuarioDAO {
     }
 
     public void deletar(int id) {
+        try(Connection conn = ConnectionFactory.getConnection()) {
+            String sql = "delete from usuarios where id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(id, id);
+            ps.executeUpdate();
+        }catch(SQLExeception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 }
