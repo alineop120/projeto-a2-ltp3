@@ -10,32 +10,25 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private int acesso;
+    private int nivelAcesso;
     
     // Construtor Vazio
     public Usuario() {}
     
     // Construtor
-    public Usuario(int id, String nome, String email,
-            String senha, int acesso) 
-    {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.acesso = acesso;
+    public Usuario(int id, String nome, String email, String senha, int nivelAcesso) {
+    	this.id = id;
+    	this.nome = nome;
+    	this.email = email;
+    	this.senha = senha;
+    	this.nivelAcesso = nivelAcesso;
     }
-    
+
     @Override
     public String toString() {
-        return "Usuario{" + 
-                "id = " + id + 
-                ", nome = " + nome +
-                ", email = " + email +
-                ", senha = " + senha + 
-                ", acesso = " + acesso + 
-                "}";
+    	return "Usuario{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", nivelAcesso=" + nivelAcesso + '}';
     }
+
 
     // Get's and Set's
     public int getId() {
@@ -70,12 +63,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public int getAcesso() {
-        return acesso;
+    public int getNivelAcesso() {
+        return nivelAcesso;
     }
 
-    public void setAcesso(int acesso) {
-        this.acesso = acesso;
+    public void setNivelAcesso(int nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
     }
 
 

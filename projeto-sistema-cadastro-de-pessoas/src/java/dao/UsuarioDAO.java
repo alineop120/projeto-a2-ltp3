@@ -15,39 +15,37 @@ import java.util.ArrayList;
  */
 public class UsuarioDAO {
     public List<Usuario> listarTodos() {
-    	ArrayList lista = new ArrayList();
-        
+    	ArrayList listaUsuarios = new ArrayList();
     	try (Connection conn = ConnectionFactory.getConnection()) {
             PreparedStatement ps = conn.prepareStatement("select * from usuarios");
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-            	Usuario u = new Usuario(
-                    rs.getInt("id"),
-                    rs.getString("nome"),
-                    rs.getString("email"),
-                    rs.getString("senha"),
-                    rs.getInt("acesso")
-                );
-            lista.add(u);
-            }   
+            while (rs.next()) 
+            {
+            	Usuario usuario = new Usuario();
+            	usuario.setId(rs.getInt("id"));
+            	usuario.setNome(rs.getString("nome"));
+            	usuario.setEmail(rs.getString("email"));
+            	usuario.setNivelAcesso(rs.getInt("nivel"));
+            	listaUsuarios.add(usuario);
+            }
     	} 
         catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.getMessage();
     	}
-    	return lista;
+    	return listaUsuarios;
     }
 
     public void inserir(Usuario usuario) throws SQLException {
-    	try(Connection conn = ConnectionFactory.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement("insert into usuarios(nome,email,senha,acesso) values (?,?,?,?)");
+    	try(Connection conn = ConnectionFactory.getConnection()){
+            PreparedStatement ps = conn.prepareStatement("insert into usuarios(nome,senha,email,nivel) values (?,?,?,?)");
             ps.setString(1, usuario.getNome());
-            ps.setString(2, usuario.getEmail());
-            ps.setString(3, usuario.getSenha());
-            ps.setInt(4, usuario.getAcesso());
+            ps.setString(2, usuario.getSenha());
+            ps.setString(3, usuario.getEmail());
+            ps.setInt(4, usuario.getNivelAcesso());
             ps.executeUpdate();
     	}
-        catch(SQLException e) {
-            System.out.println(e.getMessage());
+        catch(SQLException e){
+            e.getMessage();
     	}
     }
 
@@ -55,13 +53,12 @@ public class UsuarioDAO {
     }
 
     public void deletar(int id) {
-        try(Connection conn = ConnectionFactory.getConnection()) {
-            String sql = "delete from usuarios where id=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(id, id);
+        try (Connection conn = ConnectionFactory.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement("delete from usuarios where id=?");
+            ps.setInt(1,id);
             ps.executeUpdate();
-        }catch(SQLExeception ex) {
-            System.out.println(ex.getMessage());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
