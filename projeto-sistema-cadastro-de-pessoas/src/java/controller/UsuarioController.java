@@ -71,7 +71,7 @@ public class UsuarioController extends HttpServlet {
         } else {
             List<Usuario> usuarios = usuarioDAO.listarTodos();
             request.setAttribute("usuarios", usuarios);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaUsuarios.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/listaUsuarios.jsp");
             dispatcher.forward(request, response);
         }
 
