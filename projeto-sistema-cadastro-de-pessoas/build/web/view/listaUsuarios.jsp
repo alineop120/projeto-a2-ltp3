@@ -44,6 +44,10 @@
                     windown.location.href="UsuarioController?action=deletar&id="+id;
                 }
             }
+            
+            function alterarUsuario() {
+                window.location.href="UsuarioController?action=alterar&id="+id;
+            }
         </script>
     </body>
 </html>
